@@ -1,0 +1,16 @@
+a {
+    text-decoration-line: none;
+    color: black;
+}
+#carousel {
+    width: 80%;
+    margin: 0px auto 30px auto;
+}
+.carousel-out img {
+    width: auto;
+    max-height: 300px;
+}
+.post-description {
+    width: fit-content;
+    margin: 5% auto;
+}

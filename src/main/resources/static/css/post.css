@@ -1,0 +1,129 @@
+
+#att_zone{
+    width: 700px;
+    min-height:150px;
+    padding:10px;
+    border:1px dotted #00f;
+}
+#att_zone:empty:before{
+    content : attr(data-placeholder);
+    color : #999;
+    font-size:.9em;
+    text-align: center;
+}
+.post-info {
+    margin: 100px auto;
+    padding: 5%;
+    width: 80%;
+    background-color: white;
+    border:rgb(235, 235, 235) solid 1px;
+    border-radius: 10%;
+}
+.category {
+    margin: 10px 0px 30px 20px;
+    padding-bottom: 5%;
+    border-bottom: black solid 1px;
+}
+#carousel {
+    float: left;
+    width: 400px;
+    height: 400px;
+    background-color: rgb(235, 235, 235);
+}
+.carousel-out {
+    margin-top: 50%;
+    transform: translate(0%, -50%);
+}
+.carousel-out img {
+    max-height: 400px;
+    max-width: 400px;
+}
+.info-text {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.title {
+    margin-left: 440px;
+}
+.seller {
+    margin-left: 440px;
+    font-size: 1rem;
+}
+.price {
+    margin-top: 20px;
+    margin-left: 440px;
+    font-size: 3rem;
+}
+.hit {
+    margin-top: 20px;
+    margin-left: 440px;
+    font-size: 0.8rem;
+}
+.status {
+    margin-top: 20px;
+    margin-left: 440px;
+    font-size: 1.2rem;
+}
+.button-div {
+    margin-top: 5%;
+    margin-left: 440px;
+}
+.post-content {
+    clear: both;
+}
+.icons {
+    margin-left: 20px;
+}
+.post-content #content-title {
+    margin-top: 20px;
+    border-top: black solid 1px;
+    padding-top: 20px;
+    font-size: 1.2rem;
+}
+#content-body {
+    font-size: 0.9rem;
+    height: fit-content;
+    max-height: 300px;
+}
+.post-list {
+    margin: auto;
+}
+
+#post-save-title {
+    font-size: 2.5rem;
+    margin: 5% auto 5% auto;
+}
+.post-save {
+    width: fit-content;
+    margin: 5% auto;
+    background-color: white;
+    border:rgb(235, 235, 235) solid 1px;
+    border-radius: 10%;
+    padding: 5%;
+}
+#check1 .form-check {
+    margin-left: 10px;
+}
+.buttons {
+    float: right;
+    margin-right: 10px;
+}
+#btn-save {
+    margin-left: 10px;
+}
+#post-info-hot {
+    width: fit-content;
+    margin: auto;
+}
+a {
+    text-decoration-line: none;
+    color: black;
+}
+#post-cate {
+    float: left;
+}
+#post-time {
+    float: right;
+    font-size: 0.9rem;
+    opacity: 0.5;
+}

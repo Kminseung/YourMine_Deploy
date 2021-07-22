@@ -1,0 +1,116 @@
+{{>layout/header}}
+<link rel="stylesheet" href="/css/post.css"/>
+{{>layout/nav}}
+<div class="post-info">
+    <div class="category">
+        <p>
+            <span id="post-cate">-> {{post.category}}</span>
+            <span id="post-time">작성 시간: {{post.creatTime}}</span>
+        </p>
+    </div>
+    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{post.thumbnail}}" class="d-block w-100" alt="...">
+            </div>
+            {{#files}}
+                <div class="carousel-item">
+                    <img src="{{fileName}}" class="d-block w-100" alt="...">
+                </div>
+            {{/files}}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="info-text">
+        <div class="title">
+            <h4>{{post.title}}</h4>
+        </div>
+        {{#post2}}
+            <div class="seller">
+                <p>{{users.address}}</p>
+            </div>
+        {{/post2}}
+        <div class="seller">
+            <p><a href="/user/{{post.users.id}}">판매자 : {{post.users.id}}</a></p>
+        </div>
+        <div class="price">
+            <p>{{post.price}}원</p>
+        </div>
+        <div class="hit">
+            <p>
+                <span class="icons"><i class="mdi mdi-heart"></i> : {{attention}} </span>
+                <span class="icons"><i class="mdi mdi-eye"></i> : {{post.hit}} </span>
+                <span class="icons"><i class="mdi mdi-forum-outline"></i> : {{chat}} </span>
+                <span class="icons"><i class="mdi mdi-battery-charging"></i> : {{post.users.score}} </span>
+            </p>
+        </div>
+        <div class="status">
+            <ul>
+                <li>{{post.status}}</li>
+                <li>{{way}}</li>
+                {{#post.ofSize}}<li>사이즈 : {{post.ofSize}}</li>{{/post.ofSize}}
+            </ul>
+        </div>
+        <div class="button-div">
+            {{^owner}}
+                <form>
+                    <input type="hidden" id="userId" value="{{#userInfo}}{{userInfo.id}}{{/userInfo}}{{^userInfo}}guest{{/userInfo}}">
+                    <input type="hidden" id="postNo" value="{{post.id}}">
+                </form>
+                <button type="button" class="btn btn-secondary" id="btn-attention"><i class="mdi mdi-heart"></i>  찜하기</button>
+                <button type="button" class="btn btn-danger" id="btn-chatOpen"><i class="mdi mdi-forum-outline"></i>  대화하기</button>
+            {{/owner}}
+            {{#owner}}
+                <form id="deleteForm" action="/posts/delete/{{post.id}}" method="get">
+                </form>
+                <a href="/posts/modify/{{post.id}}" role="button" class="btn btn-secondary"><i class="mdi mdi-pencil"></i>  수정</a>
+                <button type="button" id="btn-postDelete" class="btn btn-danger"><i class="mdi mdi-delete-forever"></i>  삭제</button>
+            {{/owner}}
+
+        </div>
+    </div>
+    <div class="post-content">
+        <p id="content-title"> 상품 설명</p>
+        <p id="content-body">{{post.content}}</p>
+
+    </div>
+</div>
+
+<div class="post-list">
+    <h3 id="post-info-hot">최근 인기상품</h3>
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5 text-truncate">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                {{#hitPost}}
+                    <div class="col mb-5">
+                        <a href="/posts/{{id}}">
+                            <div class="card h-100">
+                                <img src="{{thumbnail}}" class="card-img-top" alt="{{title}}" width="200px" height="200px">
+                                <div class="card-body p-4">
+                                    <div class="text-center">
+                                        <h5 class="fw-bolder">{{title}}</h5>
+                                        <p>{{price}}원</p>
+                                        <p>{{status}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {{/hitPost}}
+            </div>
+        </div>
+    </section>
+</div>
+{{>layout/footer}}
+{{>layout/js}}
+<script src="/js/post.js"></script>
+<script src="/js/carousel.js"></script>
+</body>
+</html>

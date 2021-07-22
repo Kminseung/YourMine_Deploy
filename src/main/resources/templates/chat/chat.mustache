@@ -1,0 +1,99 @@
+{{>layout/header}}
+<link href="/css/reviewModal.css" rel="stylesheet" />
+<link href="/css/dropdown.css" rel="stylesheet" />
+<link href="/css/chat.css" rel="stylesheet" />
+<div class="chatBox" style="width: 380px; height: 520px;">
+    <div class="ttt" style="width: 380px; height: 40px;">
+        <div class="dropdown" style="display: inline-block;">
+            <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                ☰
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                {{#review}}
+                <li><a class="dropdown-item" href="#" id="modalBtn">리뷰쓰기</a></li>
+                {{/review}}
+                {{#owner}}
+                <li class="dropdown-submenu"><a class="dropdown-item" tabindex="-1" href="#" id="statusDropdown">{{post.status}}</a>
+                    <input type="hidden" id="status" value="{{post.status}}">
+                    <input type="hidden" id="postNo" value="{{post.id}}">
+                    <ul class="dropdown-menu" id="dropdown-menu">
+                        <li><a class="dropdown-item" tabindex="-1" href="#" onclick="setStandby()">거래대기</a></li>
+                        <li><a class="dropdown-item" tabindex="-1" href="#" onclick="setProgress()">거래중</a></li>
+                        <li><a class="dropdown-item" tabindex="-1" href="#" onclick="setDone()">거래완료</a></li>
+                    </ul>
+                </li>
+                {{/owner}}
+                <li><a class="dropdown-item" href="#" onclick="chatOut()" style="color: red;">채팅창 나가기</a></li>
+            </ul>
+        </div>
+        <div class="title" style="display: inline-block;">{{post.title}}</div>
+    </div>
+
+    <div class="chatBoxTheme hhh" id="chatBoxTheme" style="width: 380px; height: 480px;">
+        <div id="chatting" class="chatting" onchange="readCheck()"></div>
+
+        <input type="hidden" id="sessionId" name="sessionId" value="{{userInfo.id}}">
+        <input type="hidden" id="roomId" name="roomId" value="{{roomId}}">
+        <input type="hidden" id="userName" name="userName" value="{{userInfo.id}}">
+        <input type="hidden" id="listener" name="listener" value="{{listener}}">
+
+        <div class="sendForm">
+            <textarea id="message" class="sendMessage" placeholder="메시지를 입력하세요."></textarea>
+            <div class="button" onclick="send()"><p>전송</p></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+{{#review}}
+    <input type="hidden" id="no" value="{{no}}">
+    <input type="hidden" id="position" value="{{position}}">
+    <div id="reviewModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>리뷰 작성</h2>
+            </div>
+            <div class="modal-body">
+                <p>상대방과의 거래는 어떠셨나요?</p>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="battery1" value="1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        <i class="mdi mdi-battery-outline"></i>
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="battery1" value="2">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        <i class="mdi mdi-battery-20"></i>
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="battery1" value="3">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        <i class="mdi mdi-battery-50"></i>
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="battery1" value="4">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        <i class="mdi mdi-battery-80"></i>
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="battery1" value="5">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        <i class="mdi mdi-battery"></i>
+                    </label>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" id="reviewContent" placeholder="한줄로 평가하기">
+                </div>
+                <button role="button" id="sendButton" class="btn btn-primary" onclick="sendReview()">확인</button>
+            </div>
+        </div>
+    </div>
+{{/review}}
+{{>layout/js}}
+<script src="/js/reviewModal.js"></script>
+<script src="/js/chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{{>layout/header}}
+<link rel="stylesheet" href="/css/account.css"/>
+{{>layout/nav}}
+<div class="account-form">
+    <div id="account-logo">
+        개인정보 변경
+    </div>
+    <form>
+        <input type="hidden" value="{{userInfo.id}}" id="id" name="id">
+        <div class="form-floating input-group mb-3">
+            <input type="text" class="form-control" id="name" placeholder="name" value="{{userInfo.name}}">
+            <label for="name">이름</label>
+        </div>
+        <div class="form-floating input-group mb-3">
+            <button class="btn btn-outline-secondary" type="button" id="btn-postcode">주소 찾기</button>
+            <input type="text" class="form-control" id="postcode" placeholder="우편번호" aria-label="Example text with button addon" aria-describedby="button-addon1" readonly>
+        </div>
+        <div class="form-floating input-group mb-3">
+            <input type="text" id="address" class="form-control" placeholder="주소" {{#userInfo.address}}value="{{userInfo.address}}"{{/userInfo.address}} readonly>
+            <label for="address">주소</label>
+        </div>
+        <br>
+        <div class="form-floating input-group mb-3">
+            <input type="text" id="detailAddress" class="form-control" placeholder="상세주소" {{#userInfo.detailAddress}}value="{{userInfo.detailAddress}}"{{/userInfo.detailAddress}}>
+            <label for="detailAddress">상세주소</label>
+        </div>
+        <div class="form-floating input-group mb-3">
+            <input type="text" id="extraAddress" class="form-control" placeholder="비고" readonly>
+            <label for="detailAddress">비고</label>
+        </div>
+        <div class="form-floating input-group mb-3">
+            <input type="tel" class="form-control" id="phone" placeholder="전화번호" {{#userInfo.phone}}value="{{userInfo.phone}}"{{/userInfo.phone}}>
+            <label for="phone">전화번호</label>
+        </div>
+    </form>
+    <a href="/myPage" role="button" class="btn btn-secondary">취소</a>
+    <button type="button" class="btn btn-primary" id="btn-userModify">정보 등록</button>
+</div>
+{{>layout/footer}}
+{{>layout/js}}
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/js/account.js"></script>
+</body>
+</html>
