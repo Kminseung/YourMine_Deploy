@@ -18,7 +18,6 @@ import java.io.IOException;
 
 @Service
 @NoArgsConstructor
-@PropertySource("classpath:resources/application-custom.properties")
 public class S3Service {
     private AmazonS3 s3Client;
 
