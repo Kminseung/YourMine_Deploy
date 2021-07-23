@@ -2,6 +2,7 @@ package com.bit.yourmine.service.s3;
 
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import com.amazonaws.auth.AWSCredentials;
@@ -17,6 +18,7 @@ import java.io.IOException;
 
 @Service
 @NoArgsConstructor
+@PropertySource("classpath:resources/application-custom.properties")
 public class S3Service {
     private AmazonS3 s3Client;
 
